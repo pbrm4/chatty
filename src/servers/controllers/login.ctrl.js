@@ -1,11 +1,12 @@
+let jwt = require('jsonwebtoken');
 let userQuery = require('../queries/user.query');
 let bcrypt = require('bcrypt');
 let authUtils = require('../utils/auth.utils');
 
 
-exports.userSignup = userSignup;
+exports.login = login;
 
-async function userSignup(req, res, next) {
+async function login(req, res, next) {
     try {
         let hashed_password;
         await bcrypt.hash(req.body.password, process.env.SALT_ROUNDS, function (err, hash) {
@@ -31,29 +32,3 @@ async function userSignup(req, res, next) {
         console.log(err);
     }
 }
-
-
-function verifyJWTToken(req, res) {
-    if (req.headers.authorization && req.headers.authorization.includes(" ")) {
-        var token = req.headers.authorization.split(" ")[1];
-    } else {
-        var token = req.headers.authorization;
-    }
-    try {
-        if (!token) {
-            res.bhejdo(HttpStatus.UNAUTHORIZED, { success: false });
-            return null;
-        }
-        var payload = jwt.verify(token, process.env.TOKEN_SECRET);
-        if (payload) {
-            return payload;
-        }
-        else {
-            res.bhejdo(HttpStatus.UNAUTHORIZED, err);
-            return null;
-        }
-    } catch (err) {
-        res.bhejdo(HttpStatus.INTERNAL_SERVER_ERROR, err);
-        return null;
-    }
-};

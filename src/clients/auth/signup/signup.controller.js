@@ -3,10 +3,12 @@
 angular.module('auth.signup')
     .component('signUp', {
         templateUrl: 'auth/signup/signup.template.html',
-        controller: ['SignupService', function SignupController(singupService) {
+        controller: ['$scope', 'SignupService', function SignupController($scope, signupService) {
             this.name = null;
             this.email = null;
             this.password = null;
+
+            $scope.signupSuccess = false;
 
             this.signupUser = function() {
                 const user = {
@@ -15,9 +17,9 @@ angular.module('auth.signup')
                     password : this.password
                 }
 
-                singupService.signup(user)
+                signupService.signup(user)
                     .then(function(response) {
-                        console.log(response);
+                        $scope.signupSuccess = true;
                     }, function(error) {
                         console.log(error);
                     });

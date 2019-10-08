@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="mx-auto d-table">
+        <h1>Log in to start chatting!</h1>
+        <form>
+            <label for="email">Email</label>
+            <input id="email" type="email" ng-model="$ctrl.email" placeholder="foo@bar.com">
+            <label for="password">Password</label>
+            <input id="password" type="password" ng-model="$ctrl.password" placeholder="@WesomePassw0rd">
+            <input type="submit" ng-click="$ctrl.loginUser()" value="Login!" />
+        </form>
+        <a href="#!/signup">Sign up to start chatting...</a>
+    </div>
+</div>

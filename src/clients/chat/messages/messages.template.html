@@ -1,7 +1,7 @@
-<div ng-repeat="msg in $ctrl.messages" class="container-fluid">
-    <div class="chat-container">
-        <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-        <p>Hello. How are you today?</p>
-        <span class="time-right">11:00</span>
+<div ng-repeat="msg in $ctrl.data" class="container-fluid">
+    <div ng-if="!msg.join" class="chat-container" ng-class="{darker: msg.msg_by_user}">
+        <p>{{msg.message}}</p>
+        <span class="time-right">{{msg.Name}} | {{msg.time_stamp}}</span>
     </div>
+    <p ng-if="msg.join" style="float: right; color: brown;">{{msg.name}} ({{msg.email}}) has joined the chat</p>
 </div>

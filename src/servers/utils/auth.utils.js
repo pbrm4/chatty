@@ -15,19 +15,18 @@ function generateToken(user) {
     return jwt.sign(payload, process.env.JWT_SECRET);
 }
 
-async function verifyJWTToken(req, res) {
+async function verifyJWTToken(req, res, next) {
     let token;
-    if (req.cookies && req.cookies.token) {
-        token = req.cookies.token;
+    if (req.cookies && req.cookies.jwt) {
+        token = req.cookies.jwt;
     }
     else {
-        res.status(403).send({ success: false, message: "Please Login Again" });
+        return res.status(403).send({ success: false, message: "Please Login Again" });
     }
 
     try {
         if (!token) {
-            res.status(403).send({ success: false });
-            return null;
+            return res.status(403).send({ success: false });
         }
         var payload = jwt.verify(token, process.env.JWT_SECRET);
         if (payload) {
@@ -37,11 +36,9 @@ async function verifyJWTToken(req, res) {
             next();
         }
         else {
-            res.status(403).send(err);
-            return null;
+            return res.status(403).send(err);
         }
     } catch (err) {
-        res.status(500).send(err);
-        return null;
+        return res.status(500).send(err);
     }
 };

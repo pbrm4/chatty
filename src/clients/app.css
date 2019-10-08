@@ -25,10 +25,6 @@ padding: 8px 8px;
 text-decoration: none;
 }
 
-.container-fluid {
-padding: 0 !important;
-}
-
 .chat-input {
 width: 95%;
 }

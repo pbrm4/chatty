@@ -18,6 +18,7 @@ angular.module('auth.login')
                 loginService.login(user)
                     .then(function (response) {
                         $scope.loginSuccess = true;
+                        sessionStorage.user = JSON.stringify(response.data.data);
                         $location.url('/chat');
                     }, function (error) {
                         console.log(error);

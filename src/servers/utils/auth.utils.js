@@ -1,4 +1,5 @@
 let jwt = require('jsonwebtoken');
+let moment = require('moment');
 
 exports.generateToken = generateToken;
 

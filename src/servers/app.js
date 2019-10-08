@@ -3,10 +3,12 @@ const app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 let dotenv = require('dotenv');
-global.db = require('./db/knexfile');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+dotenv.config({ path: __dirname + '/.env' });
+
+global.db = require('./db/knexfile');
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../clients/index.html'));

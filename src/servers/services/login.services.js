@@ -15,6 +15,7 @@ async function login(req) {
             return { status: 403, success: false, message: "Email ID or password is incorrect" }
         }
         let jwtToken = authUtils.generateToken(user[0]);
+        delete user[0].password;
 
         return { status: 200, success: true, message: "Logging you in", jwtToken: jwtToken, data: user[0] };
     }

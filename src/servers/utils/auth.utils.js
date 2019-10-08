@@ -1,5 +1,6 @@
 let jwt = require('jsonwebtoken');
 let moment = require('moment');
+let userQuery = require('../queries/user.query');
 
 exports.generateToken = generateToken;
 exports.verifyJWTToken = verifyJWTToken;
@@ -14,7 +15,7 @@ function generateToken(user) {
     return jwt.sign(payload, process.env.JWT_SECRET);
 }
 
-function verifyJWTToken(req, res) {
+async function verifyJWTToken(req, res) {
     let token;
     if (req.cookies && req.cookies.token) {
         token = req.cookies.token;
@@ -31,7 +32,8 @@ function verifyJWTToken(req, res) {
         var payload = jwt.verify(token, process.env.JWT_SECRET);
         if (payload) {
             req.user = {};
-            req.user.id = payload.sub;
+            let userDeets = await userQuery.getUserFromId(payload.sub);
+            req.user = userDeets[0]
             next();
         }
         else {

@@ -1,0 +1,19 @@
+{
+  "name": "servers",
+  "version": "1.0.0",
+  "description": "Chat app server side",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pbrm4/chatty.git"
+  },
+  "author": "Pramod/Ankush",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pbrm4/chatty/issues"
+  },
+  "homepage": "https://github.com/pbrm4/chatty#readme"
+}

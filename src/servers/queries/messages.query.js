@@ -9,6 +9,11 @@ exports.get50Messages = function (user_id) {
             'u.Name',
             'u.email_id as email_id',
             'u.id as user_id',
-            db.raw('concat(date(created_at),\' \',to_char(created_at, \'HH24:MI\')) as time_stamp')
+            'msg.created_at as time_stamp'
         ]);
+}
+
+exports.addMessage = function (message_obj) {
+    return db.from('messages')
+        .insert(message_obj);
 }

@@ -1,6 +1,6 @@
 <div>
     <form class="chat-form">
-        <input class="chat-input" type="text" placeholder="Type here...">
-        <input class="mx-2 chat-send" type="submit" ng-click="" value="Send!" />
+        <input class="chat-input" ng-model="text" type="text" placeholder="Type here...">
+        <input class="mx-2 chat-send" ng-click="$ctrl.send()" type="submit" ng-click="" value="Send!" />
     </form>
 </div>

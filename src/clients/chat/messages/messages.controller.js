@@ -7,6 +7,6 @@ angular.module('chat.messages')
         },
         templateUrl: 'chat/messages/messages.template.html',
         controller: [function MessagesController() {
-            
+            this.user = JSON.parse(sessionStorage.user).id;
         }]
     });

@@ -7,6 +7,12 @@ exports.userSignup = userSignup;
 
 async function userSignup(req, res, next) {
     try {
+
+        let user = await userQuery.getUserForLogin(req.body.email);
+        if (user) {
+            return res.status(400).send({ success: false, message: "Email ID already used before" });
+        }
+
         let hashed_password;
         await bcrypt.hash(req.body.password, process.env.SALT_ROUNDS, function (err, hash) {
             hashed_password = hash;
@@ -23,8 +29,6 @@ async function userSignup(req, res, next) {
 
         res.cookie('jwt', jwtToken);
         return res.status(200).send({ success: true, msg: "User Created successfully" });
-
-
     }
     catch (err) {
         return res.status(500).send({ success: true, msg: "Kuch toh Fata" });

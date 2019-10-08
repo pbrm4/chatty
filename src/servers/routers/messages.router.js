@@ -3,6 +3,6 @@ let router = express.Router();
 
 let messagesCtrl = require('../controllers/messages.ctrl');
 
-router.post('/messages', messagesCtrl.getInitialMessageLoad);
+router.get('/messages', messagesCtrl.getInitialMessageLoad);
 
 module.exports = router;

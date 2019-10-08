@@ -10,6 +10,7 @@ exports.get50Messages = function (user_id) {
             'u.name',
             'u.email_id as email_id',
             'u.id as user_id',
+            db.raw('concat(date(created_at),\' \',to_char(created_at, \'HH24:MI\')) as time_stamp'),
             db.raw('case when u.id = ' + user_id + ' then true else false end as msg_by_user')
         ]);
 }

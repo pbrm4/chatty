@@ -35,29 +35,3 @@ async function userSignup(req, res, next) {
         console.log(err);
     }
 }
-
-
-function verifyJWTToken(req, res) {
-    if (req.headers.authorization && req.headers.authorization.includes(" ")) {
-        var token = req.headers.authorization.split(" ")[1];
-    } else {
-        var token = req.headers.authorization;
-    }
-    try {
-        if (!token) {
-            res.bhejdo(HttpStatus.UNAUTHORIZED, { success: false });
-            return null;
-        }
-        var payload = jwt.verify(token, process.env.TOKEN_SECRET);
-        if (payload) {
-            return payload;
-        }
-        else {
-            res.bhejdo(HttpStatus.UNAUTHORIZED, err);
-            return null;
-        }
-    } catch (err) {
-        res.bhejdo(HttpStatus.INTERNAL_SERVER_ERROR, err);
-        return null;
-    }
-};

@@ -10,14 +10,11 @@ async function login(req) {
         if (!user) {
             return { status: 400, success: false, message: "Email ID or password is incorrect" }
         }
-
-        await bcrypt.compare(req.body.password, user[0].password, function (err, yes) {
-            if (!yes) {
-                return { status: 403, success: false, message: "Email ID or password is incorrect" }
-            }
-        });
-
-        let jwtToken = authUtils.generateToken(addUser[0]);
+        let yes = await bcrypt.compare(req.body.password, user[0].password);
+        if (!yes) {
+            return { status: 403, success: false, message: "Email ID or password is incorrect" }
+        }
+        let jwtToken = authUtils.generateToken(user[0]);
 
         return { status: 200, success: true, message: "Logging you in", jwtToken: jwtToken };
     }

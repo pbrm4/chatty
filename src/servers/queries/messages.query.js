@@ -6,11 +6,9 @@ exports.get50Messages = function (user_id) {
         .where('msg.is_deleted', false)
         .select([
             'msg.message',
-            'msg.id as msg_id',
             'u.Name',
             'u.email_id as email_id',
             'u.id as user_id',
-            db.raw('concat(date(created_at),\' \',to_char(created_at, \'HH24:MI\')) as time_stamp'),
-            db.raw('case when u.id = ' + user_id + ' then true else false end as msg_by_user')
+            db.raw('concat(date(created_at),\' \',to_char(created_at, \'HH24:MI\')) as time_stamp')
         ]);
 }

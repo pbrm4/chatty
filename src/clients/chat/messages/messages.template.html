@@ -1,7 +1,8 @@
 <div ng-repeat="msg in $ctrl.data" class="container-fluid">
-    <div ng-if="!msg.join" class="chat-container" ng-class="{darker: msg.msg_by_user}">
+    <div ng-if="!msg.join && !msg.logout" class="chat-container" ng-class="{darker: msg.user_id === $ctrl.user}">
         <p>{{msg.message}}</p>
-        <span class="time-right">{{msg.Name}} | {{msg.time_stamp}}</span>
+        <span class="time-right">{{msg.Name}} | {{msg.time_stamp | date:'medium'}}</span>
     </div>
     <p ng-if="msg.join" style="float: right; color: brown;">{{msg.name}} ({{msg.email}}) has joined the chat</p>
+    <p ng-if="msg.logout" style="float: right; color: gray;">{{msg.name}} ({{msg.email}}) has left the chat</p>
 </div>

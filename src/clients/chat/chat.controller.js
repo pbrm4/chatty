@@ -7,11 +7,21 @@ angular.module('auth.login')
             $scope.data = [];
 
             socket.on('user:join', function(data) {
-                console.log(data);
                 data.join = true;
                 $scope.data.push(data);
                 $scope.$apply();
-            })
+            });
+
+            socket.on('user:logout', function(data) {
+                data.logout = true;
+                $scope.data.push(data);
+                $scope.$apply();
+            });
+
+            socket.on('chat', function(data) {
+                $scope.data.push(data);
+                $scope.$apply();
+            });
 
             chatService.getMessages()
                 .then(function(response) {

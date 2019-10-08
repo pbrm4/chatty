@@ -9,5 +9,8 @@ angular.module('chattyApp')
             .when('/login', {
                 template: '<log-in></log-in>'
             })
+            .when('/chat', {
+                template: '<chat></chat>'
+            })
             .otherwise('/login');
     }]);

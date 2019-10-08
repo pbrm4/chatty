@@ -1,4 +1,81 @@
 body {
-    min-width: 100vw;
-    min-height: 100vh;
+min-width: 100vw;
+min-height: 100vh;
+}
+
+.topnav {
+overflow: hidden;
+background-color: #150f2b;
+}
+
+.topnav a {
+float: right;
+color: #f0a50c;
+text-align: center;
+padding: 8px 8px;
+text-decoration: none;
+font-size: 20px;
+}
+
+.topnav img, h3 {
+float: left;
+color: #f0a50c;
+text-align: center;
+padding: 8px 8px;
+text-decoration: none;
+}
+
+.container-fluid {
+padding: 0 !important;
+}
+
+.chat-input {
+width: 95%;
+}
+
+.chat-send {
+float: right;
+}
+
+.chat-container {
+border: 2px solid #dedede;
+background-color: #f1f1f1;
+border-radius: 5px;
+padding: 10px;
+margin: 10px 0;
+}
+
+.darker {
+border-color: #ccc;
+background-color: #ddd;
+}
+
+.chat-container::after {
+content: "";
+clear: both;
+display: table;
+}
+
+.chat-container img {
+float: left;
+max-width: 60px;
+width: 100%;
+margin-right: 20px;
+border-radius: 50%;
+}
+
+.chat-container img.right {
+float: right;
+margin-left: 20px;
+margin-right:0;
+}
+
+.time-right {
+float: right;
+color: #aaa;
+}
+
+.time-left {
+float: left;
+color: #999;
 }

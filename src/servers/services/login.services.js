@@ -1,8 +1,8 @@
-exports.login = login;
 let userQuery = require('../queries/user.query');
 let bcrypt = require('bcrypt');
 let authUtils = require('../utils/auth.utils');
 
+exports.login = login;
 
 async function login(req) {
     try {

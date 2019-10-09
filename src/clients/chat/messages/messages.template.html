@@ -4,6 +4,6 @@
         <p>{{msg.message}}</p>
         <span class="time-right">{{msg.Name}} | {{msg.time_stamp | date:'medium'}}</span>
     </div>
-    <p ng-if="msg.join" style="float: right; color: brown;">{{msg.name}} ({{msg.email}}) has joined the chat</p>
-    <p ng-if="msg.logout" style="float: right; color: gray;">{{msg.name}} ({{msg.email}}) has left the chat</p>
+    <p ng-if="msg.join" style="float: right; color: brown; font-size: smaller">{{msg.name}} ({{msg.email}}) has joined the chat</p>
+    <p ng-if="msg.logout" style="float: right; color: gray; font-size: smaller">{{msg.name}} ({{msg.email}}) has left the chat</p>
 </div>

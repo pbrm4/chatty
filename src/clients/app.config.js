@@ -8,13 +8,6 @@ angular.module('chattyApp')
         }]);
 
         $routeProvider
-            .when('/signup', {
-                template: '<sign-up></sign-up>',
-                redirectTo: function() {
-                    if ($cookies.get('jwt'))
-                        return '/chat'
-                }
-            })
             .when('/login', {
                 template: '<log-in></log-in>',
                 redirectTo: function() {

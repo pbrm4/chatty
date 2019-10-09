@@ -1,4 +1,4 @@
 'use strict';
 
 // Define the `auth` module
-angular.module('auth', ['auth.signup', 'auth.login']);
+angular.module('auth', ['auth.login']);

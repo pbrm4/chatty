@@ -9,6 +9,7 @@ angular.module('auth.login')
             this.email = null;
             this.password = null;
 
+            $scope.user_invalid_error = false;
             $scope.loginSuccess = false;
 
             this.loginUser = function () {
@@ -24,6 +25,8 @@ angular.module('auth.login')
                         localStorage.user = JSON.stringify(response.data.data);
                         $location.url('/chat');
                     }, function (error) {
+                        $scope.error = error.data.data;
+                        $scope.user_invalid_error = true;
                         $scope.loginLoad = false;
                         console.log(error);
                     });

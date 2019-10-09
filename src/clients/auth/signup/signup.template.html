@@ -23,7 +23,7 @@
                 <div ng-if="loginLoad" class="loader"></div>
             </form>
             <div ng-if="user_exist_error" class="alert alert-danger" role="alert">
-                The user already exists. Kindly <a href="#!/login" class="alert-link">login</a> using your credentials.
+                {{error.message}}
             </div>
         </div>
     </div>

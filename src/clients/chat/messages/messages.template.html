@@ -1,4 +1,5 @@
-<div ng-repeat="msg in $ctrl.data" class="container-fluid clearfix">
+<div ng-if="!$ctrl.data" class="chat-loader mx-auto my-5"></div>
+<div ng-if="$ctrl.data" ng-repeat="msg in $ctrl.data" class="container-fluid clearfix slide-up">
     <div ng-if="!msg.join && !msg.logout" class="chat-container" ng-class="{darker: msg.user_id === $ctrl.user}">
         <p>{{msg.message}}</p>
         <span class="time-right">{{msg.Name}} | {{msg.time_stamp | date:'medium'}}</span>

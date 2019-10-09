@@ -1,13 +1,19 @@
-<div class="container-fluid">
-    <div class="mx-auto d-table">
-        <h1>Log in to start chatting!</h1>
-        <form>
-            <label for="email">Email</label>
-            <input id="email" type="email" ng-model="$ctrl.email" placeholder="foo@bar.com">
-            <label for="password">Password</label>
-            <input id="password" type="password" ng-model="$ctrl.password" placeholder="@WesomePassw0rd">
-            <input type="submit" ng-click="$ctrl.loginUser()" value="Login!" />
-        </form>
-        <a href="#!/signup">Sign up to start chatting...</a>
+<div class="container-fluid auth-container-outer">
+    <div class="mx-auto d-table p-4 align-middle border rounded auth-container-inner">
+        <h1>Log in to start (<span style="color: #f0a50c;">Chatty</span>)ing!</h1>
+        <div style="display: flex;">
+            <form class="auth-form mx-2 w-50" name="loginForm">
+                <label for="email">Email</label>
+                <input class="w-100" name="email" id="email" type="email" ng-model="$ctrl.email" placeholder="foo@bar.com" required><span class="text-danger" ng-show="loginForm.email.$touched && loginForm.email.$invalid">Email is mandatory</span><br>
+                <label for="password">Password</label>
+                <input minlength="8" maxlength="16" class="w-100" name="password" id="password" type="password" ng-model="$ctrl.password" placeholder="@WesomePassw0rd" required><span class="text-danger" ng-show="loginForm.password.$touched && loginForm.password.$invalid">Password is mandatory (8-16 char)</span><br>
+                <input class="w-100" type="submit" ng-if="!loginLoad" ng-click="$ctrl.loginUser()" value="Login!" ng-disabled="!loginForm.$valid"/>
+                <div ng-if="loginLoad" class="loader"></div>
+            </form>
+            <div class="mx-2 border-left px-2 py-5">
+                <h3 class="ml-2">or</h3>
+                <a href="#!/signup">Sign up and start chatting...</a>
+            </div>
+        </div>
     </div>
 </div>

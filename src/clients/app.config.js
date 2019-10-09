@@ -9,10 +9,18 @@ angular.module('chattyApp')
 
         $routeProvider
             .when('/signup', {
-                template: '<sign-up></sign-up>'
+                template: '<sign-up></sign-up>',
+                redirectTo: function() {
+                    if ($cookies.get('jwt'))
+                        return '/chat'
+                }
             })
             .when('/login', {
-                template: '<log-in></log-in>'
+                template: '<log-in></log-in>',
+                redirectTo: function() {
+                    if ($cookies.get('jwt'))
+                        return '/chat'
+                }
             })
             .when('/chat', {
                 template: '<chat></chat>',

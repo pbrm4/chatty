@@ -12,8 +12,3 @@ exports.get50Messages = function (user_id) {
             'msg.created_at as time_stamp'
         ]);
 }
-
-exports.addMessage = function (message_obj) {
-    return db.from('messages')
-        .insert(message_obj);
-}

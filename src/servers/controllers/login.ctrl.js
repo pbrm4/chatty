@@ -7,7 +7,6 @@ async function login(req, res, next) {
         let result = await loginServices.login(req);
         if (result.status == 200) {
             res.cookie('jwt', result.jwtToken);
-            socketIo.sockets.emit('user:join', { email: result.data.email_id, name: result.data.Name });
             return res.status(result.status).send({ success: result.success, message: result.message, data: result.data });
         }
         return res.status(result.status).send({ success: result.success, message: result.message });

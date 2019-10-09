@@ -51,7 +51,7 @@
     <!-- Load socket -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        const socket = io('http://localhost:8080');
+        const socket = io('http://' + window.location.host);
     </script>
 </head>
 

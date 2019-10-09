@@ -10,7 +10,6 @@ angular.module('chat.frame')
 
             this.logoutService = function () {
                 $cookies.remove('jwt');
-                socket.emit('user:logout', { name: this.session.Name, email: this.session.email_id, user_id: this.session.id });
                 localStorage.removeItem('user')
                 $location.url('/login');
             };

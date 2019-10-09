@@ -33,7 +33,7 @@ angular.module('auth.signup')
                     .then(function (response) {
                         $scope.signupSuccess = true;
                     }, function (error) {
-                        $scope.error = error.data.data;
+                        $scope.error = error.data;
                         $scope.user_exist_error = true;
                         $scope.loginLoad = false;
                         console.log(error);

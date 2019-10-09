@@ -25,7 +25,7 @@ angular.module('auth.login')
                         localStorage.user = JSON.stringify(response.data.data);
                         $location.url('/chat');
                     }, function (error) {
-                        $scope.error = error.data.data;
+                        $scope.error = error.data;
                         $scope.user_invalid_error = true;
                         $scope.loginLoad = false;
                         console.log(error);

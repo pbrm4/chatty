@@ -8,19 +8,31 @@ angular.module('auth.signup')
             this.email = null;
             this.password = null;
 
+            $scope.loginLoad = false;
             $scope.signupSuccess = false;
 
-            this.signupUser = function() {
+            this.togglePass = function () {
+                var x = document.getElementById("password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+
+            this.signupUser = function () {
+                $scope.loginLoad = true;
                 const user = {
-                    name : this.name,
-                    email : this.email,
-                    password : this.password
+                    name: this.name,
+                    email: this.email,
+                    password: this.password
                 }
 
                 signupService.signup(user)
-                    .then(function(response) {
+                    .then(function (response) {
                         $scope.signupSuccess = true;
-                    }, function(error) {
+                    }, function (error) {
+                        $scope.loginLoad = false;
                         console.log(error);
                     });
             };

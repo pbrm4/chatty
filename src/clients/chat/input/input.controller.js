@@ -6,7 +6,7 @@ angular.module('chat.input')
         controller: ['$scope', function InputController($scope) {
             $scope.text = null;
 
-            var session = JSON.parse(sessionStorage.user);
+            var session = JSON.parse(localStorage.user);
 
             this.send = function() {
                 socket.emit('chat', {
@@ -15,7 +15,8 @@ angular.module('chat.input')
                     email_id: session.email_id,
                     user_id: session.id,
                     time_stamp: Date.now()
-                })
+                });
+                $scope.text = null;
             }
         }]
     });

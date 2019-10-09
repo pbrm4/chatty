@@ -1,5 +1,10 @@
-<div class="topnav">
-    <img src="assets/img/logo.jpg" height="64" width="64" class="rounded-circle">
-    <h3>{{$ctrl.name}}</h3>
-    <a href='' ng-click="$ctrl.logoutService()">Logout</a>
+<div class="topnav rounded-bottom">
+        <img src="assets/img/logo.jpg" height="64" width="64" class="rounded-circle">
+        <a href='' ng-click="$ctrl.logoutService()">
+            <h6>Logout</h6>
+        </a>
+        <div class="vl m-1"></div>
+        <a href="">
+            <h6>Welcome, {{$ctrl.name}}!</h6>
+        </a>
 </div>

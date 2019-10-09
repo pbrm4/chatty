@@ -1,4 +1,3 @@
-let messageServices = require('../services/messages.services');
 var profanity = require("profanity-hindi");
 
 module.exports = function (io) {

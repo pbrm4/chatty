@@ -3,7 +3,7 @@
 angular.module('auth.login')
     .component('chat', {
         templateUrl: 'chat/chat.template.html',
-        controller: ['$scope', '$location', 'ChatService', function ChatController($scope, $location, chatService) {
+        controller: ['$scope', '$location', '$cookies', 'ChatService', function ChatController($scope, $location, $cookies, chatService) {
             var session = JSON.parse(localStorage.user);
             $scope.data = null;
 
@@ -30,6 +30,10 @@ angular.module('auth.login')
                 },
                     function (error) {
                         console.log(error);
+                        $cookies.remove('jwt');
+                        socket.emit('user:logout', { name: this.session.Name, email: this.session.email_id, user_id: this.session.id });
+                        localStorage.removeItem('user')
+                        $location.url('/login');
                     });
         }]
     });

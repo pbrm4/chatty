@@ -9,6 +9,7 @@ angular.module('auth.signup')
             this.password = null;
 
             $scope.loginLoad = false;
+            $scope.user_exist_error = false;
             $scope.signupSuccess = false;
 
             this.togglePass = function () {
@@ -32,6 +33,7 @@ angular.module('auth.signup')
                     .then(function (response) {
                         $scope.signupSuccess = true;
                     }, function (error) {
+                        $scope.user_exist_error = true;
                         $scope.loginLoad = false;
                         console.log(error);
                     });

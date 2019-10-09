@@ -14,13 +14,17 @@
                     valid</span>
                 <label for="password">Password *</label>
                 <input minlength="8" maxlength="16" class="mb-3" id="password" name="password" type="password"
-                    ng-model="$ctrl.password" placeholder="@WesomePassw0rd" required><input type="checkbox" style="display: inline"
-                    ng-click="$ctrl.togglePass()">&nbsp;&nbsp;Show Password<span class="text-danger"
-                    ng-show="signupForm.password.$touched && signupForm.password.$invalid">Password is mandatory (8-16 chars)</span>
+                    ng-model="$ctrl.password" placeholder="@WesomePassw0rd" required><input type="checkbox"
+                    style="display: inline" ng-click="$ctrl.togglePass()">&nbsp;&nbsp;Show Password<span
+                    class="text-danger" ng-show="signupForm.password.$touched && signupForm.password.$invalid">Password
+                    is mandatory (8-16 chars)</span>
                 <input type="submit" ng-if="!loginLoad" class="w-100 mt-3" ng-click="$ctrl.signupUser()" value="Signup!"
                     ng-disabled="!signupForm.$valid" />
                 <div ng-if="loginLoad" class="loader"></div>
             </form>
+            <div ng-if="user_exist_error" class="alert alert-danger" role="alert">
+                The user already exists. Kindly <a href="#!/login" class="alert-link">login</a> using your credentials.
+            </div>
         </div>
     </div>
     <div ng-if="signupSuccess" class="alert alert-success">

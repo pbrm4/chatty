@@ -7,7 +7,7 @@ exports.login = login;
 async function login(req) {
     try {
         let user = await userQuery.getUserForLogin(req.body.email);
-        if (!user) {
+        if (user.length == 0) {
             return { status: 404, success: false, message: "Email ID or password is incorrect" }
         }
         let yes = await bcrypt.compare(req.body.password, user[0].password);

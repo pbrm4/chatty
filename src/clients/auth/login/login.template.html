@@ -15,10 +15,10 @@
                 <input class="w-100" type="submit" ng-if="!loginLoad" ng-click="$ctrl.loginUser()" value="Login!"
                     ng-disabled="!loginForm.$valid" />
                 <div ng-if="loginLoad" class="loader"></div>
+                <div ng-if="user_invalid_error" class="alert alert-danger" role="alert">
+                    {{error.message}}
+                </div>
             </form>
-            <div ng-if="user_invalid_error" class="alert alert-danger" role="alert">
-                {{error.message}}
-            </div>
             <div class="mx-2 border-left px-2 py-5">
                 <h3 class="ml-2">or</h3>
                 <a href="#!/signup">Sign up and start chatting...</a>

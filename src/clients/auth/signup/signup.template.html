@@ -21,10 +21,10 @@
                 <input type="submit" ng-if="!loginLoad" class="w-100 mt-3" ng-click="$ctrl.signupUser()" value="Signup!"
                     ng-disabled="!signupForm.$valid" />
                 <div ng-if="loginLoad" class="loader"></div>
+                <div ng-if="user_exist_error" class="alert alert-danger" role="alert">
+                    {{error.message}}
+                </div>
             </form>
-            <div ng-if="user_exist_error" class="alert alert-danger" role="alert">
-                {{error.message}}
-            </div>
         </div>
     </div>
     <div ng-if="signupSuccess" class="alert alert-success">

@@ -33,7 +33,7 @@ text-decoration: none;
 }
 
 .chat-input {
-width: 95%;
+width: 80%;
 }
 
 .chat-send {
@@ -78,6 +78,7 @@ margin-right:0;
 
 .time-right {
 float: right;
+font-size: small;
 }
 
 .loader {
@@ -143,7 +144,7 @@ float: right;
 .chat-form input[type=submit] {
   height: 40px;
   border-radius: 10px;
-  width: 4%;
+  width: 15%;
   box-shadow: 3px 2px 7px 1px #888888
 }
 
